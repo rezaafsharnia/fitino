@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Form from "./components/Form";
+import FormConfirm from "./components/FornConfirm";
+import Register from "./components/Register";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import LoginOtpPage from "./pages/LoginOtpPage";
+import UserPanelPage from "./pages/UserPanelPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="bg-zinc-50 min-h-screen  text-gray-600 flex justify-center"
+      dir="rtl"
+    >
+      <Routes>
+        <Route path={"/"} element={<HomePage />} />
+        <Route path={"/login"} element={<LoginPage />} />
+        <Route path={"/login/otp"} element={<LoginOtpPage />} />
+        <Route path={"/register"} element={<Register />} />
+        <Route path={"/user/:userName"} element={<UserPanelPage />} />
+      </Routes>
     </div>
   );
 }
