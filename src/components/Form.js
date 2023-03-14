@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +17,15 @@ function Form() {
 
   const onSubmit = (values) => {
     navigate("/login/otp", { state: { phoneNumber: values.phoneNumber } });
+    const sendOtp = async () => {
+      await axios
+        .post("http://localhost:5000/sendOtp", {
+          phone: formik.values.phoneNumber,
+        })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    };
+    sendOtp();
   };
   const formik = useFormik({
     initialValues: {

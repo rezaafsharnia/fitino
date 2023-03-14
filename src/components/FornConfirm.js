@@ -1,6 +1,7 @@
 import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
+import axios from "axios";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navigate,
   useLocation,
@@ -11,6 +12,13 @@ import OtpInput from "react18-input-otp";
 import logo from "../logo.png";
 
 function FornConfirm() {
+  // const [otpCode, setOtpCode] = useState({ phonenumber: "09371503577" });
+  // useEffect(() => {
+  //   const getOtp = async () => {
+  //     await axios.get("http://localhost:5000/sendOtp");
+  //   };
+  //   sendOtp();
+  // }, []);
   const [otp, setOtp] = useState("");
   const handleChange = (enteredOtp) => {
     setOtp(enteredOtp);
@@ -62,7 +70,7 @@ function FornConfirm() {
               boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
             }}
             shouldAutoFocus="true"
-            focusStyle={{ border: "1px solid #4ade80",outline:"none" }}
+            focusStyle={{ border: "1px solid #4ade80", outline: "none" }}
             isInputNum={true}
           />
         </div>
