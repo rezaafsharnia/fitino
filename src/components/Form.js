@@ -19,7 +19,7 @@ function Form() {
     navigate("/login/otp", { state: { phoneNumber: values.phoneNumber } });
     const sendOtp = async () => {
       await axios
-        .post("http://localhost:5000/sendOtp", {
+        .post("https://happy-morse-3ey5mp-3k.iran.liara.run/sendOtp", {
           phone: formik.values.phoneNumber,
         })
         .then((res) => console.log(res))
