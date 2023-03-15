@@ -17,7 +17,7 @@ function Form() {
 
   const onSubmit = async (values) => {
     try {
-      const result = await axios.post("http://localhost:5000/sendOtp", {
+      const result = await axios.post("https://happy-morse-3ey5mp-3k.iran.liara.run/sendOtp", {
         phone: formik.values.phoneNumber,
       });
       console.log(result);
