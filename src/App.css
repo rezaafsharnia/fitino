@@ -41,3 +41,7 @@ input[type="number"] {
     transform: rotate(360deg);
   }
 }
+
+a.active {
+  color: #4ade80;
+}

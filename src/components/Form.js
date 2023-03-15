@@ -15,23 +15,23 @@ function Form() {
       .matches(phoneRegExp, "شماره همراه شما نادرست است"),
   });
 
-  const onSubmit = (values) => {
-    navigate("/login/otp", { state: { phoneNumber: values.phoneNumber } });
-    const sendOtp = async () => {
-      await axios
-        .post("https://happy-morse-3ey5mp-3k.iran.liara.run/sendOtp", {
-          phone: formik.values.phoneNumber,
-        })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    };
-    sendOtp();
+  const onSubmit = async (values) => {
+    // navigate("/login/otp", { state: { phoneNumber: values.phoneNumber } });
+    try {
+      const result = await axios.post("http://localhost:5000/sendOtp", {
+        phone: formik.values.phoneNumber,
+      });
+      const res = await result.json();
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const formik = useFormik({
     initialValues: {
       phoneNumber: "",
     },
-    onSubmit,
+    onSubmit: onSubmit,
     validationSchema,
     validateOnMount: "true",
     isValid: () => {
