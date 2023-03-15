@@ -16,13 +16,17 @@ function Form() {
   });
 
   const onSubmit = async (values) => {
-    // navigate("/login/otp", { state: { phoneNumber: values.phoneNumber } });
     try {
       const result = await axios.post("http://localhost:5000/sendOtp", {
         phone: formik.values.phoneNumber,
       });
-      const res = await result.json();
-      console.log(res.data);
+      console.log(result);
+      navigate("/login/otp", {
+        state: {
+          phoneNumber: values.phoneNumber,
+          value: result.data.data.value,
+        },
+      });
     } catch (err) {
       console.log(err);
     }

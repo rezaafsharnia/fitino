@@ -19,26 +19,29 @@ function FornConfirm() {
   //   };
   //   sendOtp();
   // }, []);
+  console.log(OtpInput);
   const [otp, setOtp] = useState("");
+  const [otpError, setOtpError] = useState(false);
   const handleChange = (enteredOtp) => {
     setOtp(enteredOtp);
   };
   const Navigate = useNavigate();
   const location = useLocation();
-  const formik = useFormik({
-    initialValues: {
-      first: "",
-      second: "",
-    },
-  });
+
   const submitHandler = (e) => {
     e.preventDefault();
-    Navigate("/register");
+    if (location.state.value == otp) {
+      Navigate("/register");
+    } else {
+      setOtp("");
+      setOtpError(true);
+      console.log("eshtebah");
+    }
   };
 
   //Console
-  // console.log(location);
   console.log(otp);
+  console.log(location);
   return (
     <div>
       <form
@@ -72,8 +75,17 @@ function FornConfirm() {
             shouldAutoFocus="true"
             focusStyle={{ border: "1px solid #4ade80", outline: "none" }}
             isInputNum={true}
+            hasErrored={otpError}
+            errorStyle={{
+              border: "1px solid red",
+            }}
           />
         </div>
+        {otpError && (
+          <div className=" px-4 w-full text-red-500 text-sm">
+            رمز وارد شده اشتباه می باشد.
+          </div>
+        )}
 
         <div>
           <button

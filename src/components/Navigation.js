@@ -39,7 +39,7 @@ function Navigation() {
     finded.hover = !finded.hover;
     setNav(items);
   };
-  console.log(nav);
+  // console.log(nav);
   return (
     <header className="sticky top-0 z-10 py-2 shadow-md bg-white/30 flex justify-between backdrop-filter backdrop-blur-lg items-center border-b border-gray-200 py-2 px-4">
       <nav className="max-w-7xl w-full mx-auto flex justify-between items-center">
@@ -60,7 +60,7 @@ function Navigation() {
                     {item.head}
                   </NavLink>
                   {item.hover && item.submenu && (
-                    <div className="min-w-[400px] bg-white/50 shadow-xl min-h-[200px] absolute mt-4 rounded-2xl py-4 px-4 ">
+                    <div className="min-w-[400px] bg-white shadow-xl min-h-[200px] absolute mt-4 rounded-2xl py-4 px-4 ">
                       {item.submenu.map((sbm) => {
                         return (
                           <div key={sbm.title} className="flex justify-center">
